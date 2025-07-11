@@ -1,0 +1,121 @@
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: #eaf6fd;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.container {
+  background: #fff;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0px 8px 30px rgba(0, 0, 0, 0.1);
+  width: 320px;
+  text-align: center;
+}
+
+h2 {
+  margin-bottom: 20px;
+  color: #007acc;
+}
+
+.account-type {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.card {
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  padding: 10px;
+  flex: 1;
+  margin: 0 5px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.card img {
+  width: 50px;
+  height: 50px;
+}
+
+.card.selected {
+  border-color: #007acc;
+  background-color: #eaf6fd;
+  position: relative;
+}
+
+.card.selected::after {
+  content: "✔";
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #007acc;
+  color: white;
+  border-radius: 50%;
+  padding: 5px 8px;
+  font-size: 12px;
+}
+
+.subtitle {
+  font-size: 14px;
+  color: #555;
+  margin: 10px 0 20px;
+}
+
+form {
+  text-align: left;
+}
+
+label {
+  display: block;
+  font-size: 12px;
+  color: #007acc;
+  margin-bottom: 5px;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.forgot {
+  float: right;
+  font-size: 11px;
+  color: #007acc;
+  text-decoration: none;
+}
+
+.login-btn {
+  width: 100%;
+  padding: 10px;
+  background: #007acc;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.login-btn:hover {
+  background: #005e99;
+}
+
+.signup {
+  font-size: 12px;
+  margin-top: 15px;
+}
+
+.signup a {
+  color: #007acc;
+  text-decoration: none;
+}

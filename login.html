@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Healthcare Login</title>
+  <link rel="stylesheet" href="login.css">
+</head>
+<body>
+  <div class="container">
+    <h2>Choose Account Type</h2>
+
+    <div class="account-type">
+      <div class="card selected">
+        <img src="https://img.icons8.com/ios-filled/100/000000/doctor-male.png" alt="Doctor Icon">
+        <p>Doctor</p>
+      </div>
+      <div class="card">
+        <img src="https://img.icons8.com/ios-filled/100/000000/nurse-male.png" alt="Patient Icon">
+        <p>Patient</p>
+      </div>
+    </div>
+
+    <p class="subtitle">Hello doctor!<br>Please fill out the form below to get started</p>
+
+    <form>
+      <label>Email</label>
+      <input type="email" placeholder="Enter your email" required>
+
+      <label>Password <a href="#" class="forgot">Forgot?</a></label>
+      <input type="password" placeholder="Enter your password" required>
+
+      <button type="submit" class="login-btn">Login</button>
+    </form>
+
+    <p class="signup">No account? <a href="#">Signup</a></p>
+  </div>
+</body>
+</html>
