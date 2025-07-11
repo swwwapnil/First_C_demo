@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<script async
+  src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap">
+</script>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>RentIt - No Brokers, No Hassle</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="rentit.js"></script>
+
+  <style>
+    :root {
+      --blue: #3B82F6;
+      --coral: #F87171;
+      --gray: #1F2937;
+      --bg: #F9FAFB;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(to right, #f0f4ff, #ffffff);
+      color: var(--gray);
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 24px 80px;
+      background-color: white;
+    }
+
+    header .nav-left {
+      font-weight: 800;
+      font-size: 24px;
+    }
+
+    header .nav-right button {
+      margin-left: 16px;
+      padding: 10px 16px;
+      font-size: 14px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-list {
+      background-color: var(--coral);
+      color: white;
+    }
+
+    .btn-find {
+      background-color: white;
+      color: var(--gray);
+      border: 1px solid #e5e7eb;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 60px 20px;
+    }
+
+    .hero h1 {
+      font-size: 40px;
+      font-weight: 800;
+      margin-bottom: 16px;
+    }
+
+    .hero p {
+      font-size: 18px;
+      color: #4B5563;
+      margin-bottom: 40px;
+    }
+
+    .search-bar {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      margin-bottom: 60px;
+      flex-wrap: wrap;
+    }
+
+    .search-bar input,
+    .search-bar select {
+      padding: 12px 16px;
+      border-radius: 8px;
+      border: 1px solid #d1d5db;
+      min-width: 200px;
+    }
+
+    .search-bar button {
+      background-color: var(--blue);
+      color: white;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .features,
+    .how-it-works {
+      padding: 40px 80px;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 24px;
+      margin-top: 24px;
+    }
+
+    .feature {
+      background-color: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      text-align: center;
+    }
+
+    .feature i {
+      font-size: 28px;
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .how-it-works h2 {
+      margin-bottom: 24px;
+    }
+
+    .steps {
+      display: flex;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+
+    .step {
+      flex: 1;
+      min-width: 240px;
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    }
+
+    footer {
+      padding: 40px 80px;
+      background-color: #f1f5f9;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    footer .links a {
+      margin-right: 20px;
+      color: #4B5563;
+      text-decoration: none;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="nav-left">RentIt</div>
+    <div class="nav-right">
+      <button class="btn-list">List Your Property</button>
+      <button class="btn-find">Find a Home</button>
+    </div>
+  </header>
+
+  <section class="hero">
+    <h1>Find your next home — no brokers, no hassle.</h1>
+    <p>RentIt connects people directly for transparent, commission-free property rentals.</p>
+     <div class="search-bar">
+  <input type="text" id="location" placeholder="Location" />
+  <select id="propertyType">
+    <option value="">Property Type</option>
+    <option value="Flat">Flat</option>
+    <option value="PG">PG</option>
+    <option value="Villa">Villa</option>
+  </select>
+  <select id="priceRange">
+    <option value="">Price Range</option>
+    <option>$500 - $1000</option>
+    <option>$1000 - $2000</option>
+  </select>
+
+  <!-- ✅ Advanced Filters -->
+  <select id="furnishing">
+    <option value="">Furnishing</option>
+    <option value="Fully Furnished">Fully Furnished</option>
+    <option value="Semi Furnished">Semi Furnished</option>
+    <option value="Unfurnished">Unfurnished</option>
+  </select>
+
+  <select id="bedrooms">
+    <option value="">Bedrooms</option>
+    <option value="1BHK">1BHK</option>
+    <option value="2BHK">2BHK</option>
+    <option value="3BHK">3BHK</option>
+  </select>
+
+  <select id="preferences">
+    <option value="">Preferences</option>
+    <option value="Pet-friendly">Pet-friendly</option>
+    <option value="Smoking Allowed">Smoking Allowed</option>
+  </select>
+
+  <select id="sortBy">
+    <option value="">Sort By</option>
+    <option value="Price">Price</option>
+    <option value="Distance">Distance</option>
+    <option value="Date Listed">Date Listed</option>
+  </select>
+
+  <button id="searchBtn">Search</button>
+</div>
+
+<div id="results" class="results-container"></div>
+
+
+  </section>
+
+  <section class="features">
+    <h2>Key Features</h2>
+    <div class="features-grid">
+      <div class="feature"><i>🏠</i>Direct Owner Listings</div>
+      <div class="feature"><i>✅</i>Zero Brokerage</div>
+      <div class="feature"><i>🔒</i>Verified Listings</div>
+      <div class="feature"><i>🚚</i>Easy Move-in Support</div>
+      <div class="feature"><i>📍</i>Location-based Recommendations</div>
+      <div class="feature"><i>🧾</i>Rental Agreement Generator</div>
+      <div class="feature"><i>💬</i>In-app Chat</div>
+      <div class="feature"><i>🔄</i>Compare Properties</div>
+      <div class="feature"><i>🗓</i>Virtual Site Visit</div>
+      <div class="feature"><i>📲</i>Mobile App Coming Soon</div>
+    </div>
+  </section>
+
+  <section class="how-it-works">
+    <h2>How It Works</h2>
+    <div class="steps">
+      <div class="step"><strong>1. Browse Properties</strong><br/> Find rental homes that match your needs.</div>
+      <div class="step"><strong>2. Chat with Owners</strong><br/> Talk directly, ask questions, negotiate.</div>
+      <div class="step"><strong>3. Finalize & Move In</strong><br/> Agree, sign, and move into your new place.</div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="links">
+      <a href="#">About</a>
+      <a href="#">FAQs</a>
+      <a href="#">Privacy</a>
+      <a href="#">Terms</a>
+      <a href="#">Blog</a>
+    </div>
+    <div>
+      <span>🚀 App coming soon</span>
+    </div>
+  </footer>
+
+</body>
+</html>
